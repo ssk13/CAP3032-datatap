@@ -1,0 +1,29 @@
+channel
+
+Reaction reactions[] = new Reaction[10];
+
+void setup() {
+	populateArray();
+}
+
+void populateArray() {
+	for (int i = 0; i != 10; ++i) {
+		reactions[i] = new Reaction(90*i, 120*i);
+	}
+}
+
+class Reaction {
+	int velocity
+	int pitch
+	int channel = 0;
+	
+	Reaction(int velocity, int pitch) {
+
+	}
+
+	perform();
+}
+
+void mousePressed() {
+	populateArray();
+}
