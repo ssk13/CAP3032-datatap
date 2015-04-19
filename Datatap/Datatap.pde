@@ -4,7 +4,8 @@ Minim minim;
 
 int WIDTH = 800, HEIGHT = 600; //these vars represent the size of the window
 Reaction reactions[] = new Reaction[38];
-int clicks = 0, fading = 256;
+boolean initialized = false;
+int clicks = 0, fading = 0;
 String files[] = {
   "sounds/Shuffle1.wav", "sounds/Shuffle2.wav", "sounds/Shuffle3.wav", "sounds/Shuffle4.wav", 
   "sounds/Shuffle5.wav", "sounds/Shuffle6.wav", "sounds/Shuffle1.wav", "sounds/Shuffle2.wav", "sounds/Shuffle3.wav", "sounds/Shuffle4.wav", 
@@ -16,7 +17,7 @@ String files[] = {
   "sounds/Shuffle5.wav", "sounds/Shuffle6.wav"
 };
 int colors[] = {#FFFFFF,  //white
-                #000000,  //black
+                #0000ff,  //blue
                 #37B400,  //green
                 #E2F2F8,  //very light blue
                 #A4D49D,  //light green
@@ -43,7 +44,7 @@ int colors[] = {#FFFFFF,  //white
                 #8E236B,  //brown red
                 #5C3317,  //brown
                 #FFFFFF,  //white
-                #000000,  //black
+                #00ff00,  //green
                 #37B400,  //green
                 #E2F2F8,  //light green
                 #A4D49D,  //pale green
@@ -70,21 +71,21 @@ void setReactions() {
 }
 
 void draw() {
-  if (clicks < 5) {
-    fill(255);
-    textSize(32);
-    text("Use your number and letter keys to activate", 55, 50);
-  }
   if (fading < 256) {
       fill(0, 0, 0, fading);
       rect(0, 0, WIDTH, HEIGHT);
       ++fading;
-   }  
+      if (initialized == false) {
+         fill(255);
+         textSize(32);
+         text("Use your number and letter keys to activate", 55, 50);
+      }
+  } 
 }
 
 void keyPressed() {
-  if (clicks < 5) {
-     ++clicks; 
+  if (initialized == false) {
+     initialized = true; 
   }
   if (fading < 256) {
      fading = 256; 
@@ -123,6 +124,7 @@ class Reaction {
     int x = ((int) random(WIDTH - 50)) + 25;
     int y = ((int) random(HEIGHT - 50)) + 25;
     ellipse(x, y, 50, 50);
+    fill(255);
     textSize(40);
     text((char) keyVal, x - 10, y + 10);
     
