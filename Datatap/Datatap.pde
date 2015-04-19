@@ -109,6 +109,10 @@ void keyPressed() {
   } else if ((int) key > 96 && (int) key < 122) {
     active = reactions[(int) key - 85];
   }
+  else {
+     return;
+  }
+  active.keyVal = key;
   active.perform(myBus);
 }
 
@@ -118,6 +122,7 @@ class Reaction {
   int delay;
   int colorVal;
   int channel = 0;
+  int keyVal;
 
   Reaction(int pitch, int velocity, int delay, int colorVal) {
     this.velocity = velocity;
@@ -128,6 +133,14 @@ class Reaction {
 
   void perform(MidiBus bus) {
     background(colorVal);
+    noFill();
+    stroke(255);
+    int x = ((int) random(WIDTH - 50)) + 25;
+    int y = ((int) random(HEIGHT - 50)) + 25;
+    ellipse(x, y, 50, 50);
+    textSize(40);
+    text((char) keyVal, x - 10, y + 10);
+
     bus.sendNoteOn(channel, pitch, velocity);
     delay(delay);
     bus.sendNoteOff(channel, pitch, velocity);
