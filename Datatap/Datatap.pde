@@ -21,6 +21,9 @@ void setReactions() {
   fading = 0;
   changed = true;
   int setNumber = (int) random(sets.length);
+  while (sets[setNumber] == set) {
+     setNumber = (int) random(sets.length); 
+  }
   set = sets[setNumber];
   for (int i = 0; i < 38; ++i) {
      reactions[i] = new Reaction("sounds/" + (String) set + "/Shuffle" + (((int) random(setSize[setNumber])) + 1)+ ".wav");  
@@ -28,7 +31,7 @@ void setReactions() {
 }
 
 void draw() {
-  if (fading < 200) {
+  if (fading < 100) {
       fill(0, 0, 0, fading);
       rect(0, 0, WIDTH, HEIGHT);
       ++fading;
@@ -37,7 +40,7 @@ void draw() {
          textSize(32);
          text("Use your number and letter keys to activate", 55, 50);
          text("Use the space bar to shuffle", 175, 90);
-      } else if (fading < 195) {
+      } else if (fading < 95) {
          fill(255);
          textSize(32);
          text("Shuffling", 350, 50);
