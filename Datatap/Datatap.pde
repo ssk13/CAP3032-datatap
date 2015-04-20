@@ -5,8 +5,8 @@ Minim minim;
 int WIDTH = 800, HEIGHT = 600; //these vars represent the size of the window
 Reaction reactions[] = new Reaction[38];
 boolean initialized = false, changed = false, keys[] = new boolean[38];
-int fading = 0, lastKey, setSize[] = {38, 17, 6, 17};
-String sets[] = { "drums", "jazz", "indie", "latin" }, set = sets[0];
+int fading = 0, lastKey, setSize[] = {38, 15, 6, 8, 8, 12};
+String sets[] = { "drums", "piano", "indie", "acoustic", "bass", "electric" }, set = sets[0];
 char keyChars[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 
                    'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 
                    'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
