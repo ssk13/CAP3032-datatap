@@ -1,3 +1,1 @@
-READ ME
-
-this is where the information will go for our project
+This project was completed for CAP3032
